@@ -21,7 +21,5 @@ clean:
 build: clean
 	python -m build --sdist --wheel
 
-# upload: build
-# 	python -m twine upload dist/labelme_toolkit-*
-#
-# publish: build upload
+publish: build
+	python -m twine upload dist/labelme_toolkit-*
