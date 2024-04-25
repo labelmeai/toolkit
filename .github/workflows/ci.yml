@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONIOENCODING: utf-8
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        python-version: ['3.10']
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: |
+          pyproject.toml
+
+    - name: Install main
+      shell: bash
+      run: |
+        pip install .[test]
+
+    - name: Lint
+      shell: bash
+      run: |
+        make lint
+
+    - name: Test
+      shell: bash
+      run: |
+        make test
+
+    - name: Install from dist
+      shell: bash
+      run: |
+        make build
+        pip install dist/labelme_toolkit-*.whl
