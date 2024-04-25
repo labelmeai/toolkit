@@ -19,3 +19,4 @@ from labelme_toolkit._cli import _extract_image  # noqa
 from labelme_toolkit._cli import _json_to_mask  # noqa
 from labelme_toolkit._cli import _json_to_visualization  # noqa
 from labelme_toolkit._cli import _list_labels  # noqa
+from labelme_toolkit._cli import _install_toolkit_pro  # noqa
