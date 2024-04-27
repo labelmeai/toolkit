@@ -33,4 +33,4 @@ def list_labels(file_or_dir: str):
         for json_shape in json_data["shapes"]:
             unique_labels.add(json_shape["label"])
 
-    print("\n".join(sorted(unique_labels)))
+    click.echo("\n".join(sorted(unique_labels)))
