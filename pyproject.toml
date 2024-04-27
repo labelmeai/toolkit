@@ -32,9 +32,7 @@ dependencies = [
   "jinja2",
   "loguru",
   "numpy",
-  "pandas",
   "Pillow>=10.1",
-  "tabulate",
 ]
 dynamic = ["readme", "version"]
 
@@ -44,7 +42,6 @@ test = [
   "mypy",
   "types-Pillow",
   "types-setuptools",
-  "types-tabulate",
   "pytest",
   "pytest-xdist",
   "ruff",
