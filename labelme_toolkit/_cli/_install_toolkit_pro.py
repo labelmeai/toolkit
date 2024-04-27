@@ -19,7 +19,17 @@ from labelme_toolkit._cli import cli
     default="latest",
     help="version to install",
 )
-def install_toolkit_pro(access_key: str, version: str):
+@click.option(
+    "--yes",
+    is_flag=True,
+    help="install without confirmation",
+)
+@click.option(
+    "--list-versions",
+    is_flag=True,
+    help="list available versions",
+)
+def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions: bool):
     """Install Toolkit Pro.
 
     Examples:
@@ -39,16 +49,24 @@ def install_toolkit_pro(access_key: str, version: str):
         data = response.read()
         versions = [version.strip() for version in data.decode("utf-8").splitlines()]
 
-    logger.info(f"Available versions: {versions}")
+    if list_versions:
+        for version in versions:
+            click.echo(version)
+        return
 
     if version == "latest":
         version = versions[-1]
-        logger.info(f"Version: {version} (latest)")
+        logger.info(f"Installing version: {version} (latest)")
     elif version not in versions:
         logger.error(f"Version {version} is not available")
         return
     else:
-        logger.info(f"Version: {version}")
+        logger.info(f"Installing version: {version}")
+
+    if not yes:
+        if not click.confirm("Do you want to install?"):
+            click.echo("Installation is canceled.")
+            return
 
     cmd = [
         "pip",
