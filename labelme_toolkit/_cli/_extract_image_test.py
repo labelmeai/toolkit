@@ -21,7 +21,7 @@ def test_extract_image(small_dataset):  # noqa
             json_data = json.load(f)
         assert json_data["imageData"] is None
 
-        image_file = json_file.replace(".json", ".png")
+        image_file = json_file.replace(".json", ".jpg")
         assert osp.isfile(image_file)
 
         assert json_data["imagePath"] == osp.basename(image_file)

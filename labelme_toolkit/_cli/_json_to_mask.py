@@ -61,7 +61,7 @@ def _json_to_mask(
     )
     os.makedirs(output_dir, exist_ok=True)
 
-    output_file = os.path.join(output_dir, "mask.png")
+    output_file = os.path.join(output_dir, "mask.jpg")
     PIL.Image.fromarray(mask.astype("uint8") * 255).save(output_file)
     logger.info(f"Saved to: {output_file!r}")
 

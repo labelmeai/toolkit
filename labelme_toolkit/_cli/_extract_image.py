@@ -29,7 +29,7 @@ def _extract_image(json_file: str, output_dir: str) -> None:
     os.makedirs(output_dir, exist_ok=True)
 
     output_image_file = os.path.join(
-        output_dir, os.path.splitext(os.path.basename(json_file))[0] + ".png"
+        output_dir, os.path.splitext(os.path.basename(json_file))[0] + ".jpg"
     )
     image.save(output_image_file)
     logger.info(f"Saved to: {output_image_file!r}")

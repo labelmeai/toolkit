@@ -12,7 +12,7 @@ def test_json_to_mask(small_dataset):  # noqa
     subprocess.check_call(["labelmetk", "json-to-mask", small_dataset])
 
     assert osp.isdir(osp.join(small_dataset + ".export"))
-    mask_files = glob.glob(osp.join(small_dataset + ".export", "*/mask.png"))
+    mask_files = glob.glob(osp.join(small_dataset + ".export", "*/mask.jpg"))
     assert len(mask_files) == 3
 
     for mask_file in mask_files:

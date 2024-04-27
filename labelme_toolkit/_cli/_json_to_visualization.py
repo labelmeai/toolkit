@@ -76,7 +76,7 @@ def _json_to_visualization(
     )
     os.makedirs(output_dir, exist_ok=True)
 
-    output_file = os.path.join(output_dir, "visualization.png")
+    output_file = os.path.join(output_dir, "visualization.jpg")
     image.save(output_file)
     logger.info(f"Saved to: {output_file!r}")
 

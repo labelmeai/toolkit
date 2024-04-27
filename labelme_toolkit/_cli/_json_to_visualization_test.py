@@ -13,7 +13,7 @@ def test_json_to_visualization(small_dataset):  # noqa
 
     assert osp.isdir(osp.join(small_dataset + ".export"))
     visualization_files = glob.glob(
-        osp.join(small_dataset + ".export", "*/visualization.png")
+        osp.join(small_dataset + ".export", "*/visualization.jpg")
     )
     assert len(visualization_files) == 3
 
