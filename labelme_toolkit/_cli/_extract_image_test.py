@@ -6,7 +6,7 @@ import subprocess
 import numpy as np
 import PIL.Image
 
-from labelme_toolkit._testing import small_dataset  # noqa
+from .._testing import small_dataset  # noqa
 
 
 def test_extract_image(small_dataset):  # noqa

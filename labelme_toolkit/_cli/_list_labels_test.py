@@ -1,6 +1,6 @@
 import subprocess
 
-from labelme_toolkit._testing import small_dataset  # noqa
+from .._testing import small_dataset  # noqa
 
 
 def test_list_labels(small_dataset):  # noqa

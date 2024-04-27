@@ -3,7 +3,7 @@ from typing import List
 
 import click
 
-from labelme_toolkit import _paths
+from .. import _paths
 
 
 @click.command()

@@ -9,11 +9,11 @@ import imgviz
 import PIL.Image
 from loguru import logger
 
-from labelme_toolkit import _browsers
-from labelme_toolkit import _json
-from labelme_toolkit import _labelme
-from labelme_toolkit import _migrations
-from labelme_toolkit import _paths
+from .. import _browsers
+from .. import _json
+from .. import _labelme
+from .. import _migrations
+from .. import _paths
 
 
 def _json_to_visualization(

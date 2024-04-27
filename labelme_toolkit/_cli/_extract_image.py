@@ -7,9 +7,9 @@ import click
 import PIL.Image
 from loguru import logger
 
-from labelme_toolkit import _json
-from labelme_toolkit import _migrations
-from labelme_toolkit import _paths
+from .. import _json
+from .. import _migrations
+from .. import _paths
 
 
 def _extract_image(json_file: str, output_dir: str) -> None:

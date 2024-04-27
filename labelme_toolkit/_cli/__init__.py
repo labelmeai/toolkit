@@ -3,8 +3,7 @@ import sys
 import click
 from loguru import logger
 
-from labelme_toolkit import __version__
-
+from .. import __version__
 from ._extract_image import extract_image
 from ._install_toolkit_pro import install_toolkit_pro
 from ._json_to_mask import json_to_mask

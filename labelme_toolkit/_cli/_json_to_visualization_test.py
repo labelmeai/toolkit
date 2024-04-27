@@ -5,7 +5,7 @@ import subprocess
 import numpy as np
 import PIL.Image
 
-from labelme_toolkit._testing import small_dataset  # noqa
+from .._testing import small_dataset  # noqa
 
 
 def test_json_to_visualization(small_dataset):  # noqa

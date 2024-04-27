@@ -2,7 +2,7 @@ import sys
 
 from loguru import logger
 
-from labelme_toolkit._cli import cli
+from ._cli import cli
 
 
 def main():
