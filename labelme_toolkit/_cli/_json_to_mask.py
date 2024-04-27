@@ -13,7 +13,6 @@ from labelme_toolkit import _browsers
 from labelme_toolkit import _labelme
 from labelme_toolkit import _migrations
 from labelme_toolkit import _paths
-from labelme_toolkit._cli import cli
 
 
 def _json_to_mask(
@@ -69,7 +68,7 @@ def _json_to_mask(
     return output_file
 
 
-@cli.command()
+@click.command()
 @click.argument("file_or_dir", type=click.Path(exists=True), required=True)
 @click.option(
     "--include-labels",

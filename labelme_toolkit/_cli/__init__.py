@@ -5,6 +5,12 @@ from loguru import logger
 
 from labelme_toolkit import __version__
 
+from ._extract_image import extract_image
+from ._install_toolkit_pro import install_toolkit_pro
+from ._json_to_mask import json_to_mask
+from ._json_to_visualization import json_to_visualization
+from ._list_labels import list_labels
+
 
 @click.group(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.version_option(__version__)
@@ -15,8 +21,8 @@ def cli():
     )
 
 
-from labelme_toolkit._cli import _extract_image  # noqa
-from labelme_toolkit._cli import _json_to_mask  # noqa
-from labelme_toolkit._cli import _json_to_visualization  # noqa
-from labelme_toolkit._cli import _list_labels  # noqa
-from labelme_toolkit._cli import _install_toolkit_pro  # noqa
+cli.add_command(extract_image)
+cli.add_command(install_toolkit_pro)
+cli.add_command(json_to_mask)
+cli.add_command(json_to_visualization)
+cli.add_command(list_labels)

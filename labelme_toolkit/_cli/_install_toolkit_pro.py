@@ -5,10 +5,8 @@ import urllib.request
 import click
 from loguru import logger
 
-from labelme_toolkit._cli import cli
 
-
-@cli.command()
+@click.command()
 @click.option(
     "--access-key",
     prompt=True,

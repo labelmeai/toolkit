@@ -4,10 +4,9 @@ from typing import List
 import click
 
 from labelme_toolkit import _paths
-from labelme_toolkit._cli import cli
 
 
-@cli.command()
+@click.command()
 @click.argument("file_or_dir", type=click.Path(exists=True), required=True)
 def list_labels(file_or_dir: str):
     """List unique labels in the JSON files.

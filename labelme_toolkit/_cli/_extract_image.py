@@ -10,7 +10,6 @@ from loguru import logger
 from labelme_toolkit import _json
 from labelme_toolkit import _migrations
 from labelme_toolkit import _paths
-from labelme_toolkit._cli import cli
 
 
 def _extract_image(json_file: str, output_dir: str) -> None:
@@ -43,7 +42,7 @@ def _extract_image(json_file: str, output_dir: str) -> None:
     logger.info(f"Saved to: {output_json_file!r}")
 
 
-@cli.command()
+@click.command()
 @click.argument("file_or_dir", type=click.Path(exists=True), required=True)
 def extract_image(file_or_dir) -> None:
     """Extract image from a JSON file.

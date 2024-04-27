@@ -14,7 +14,6 @@ from labelme_toolkit import _json
 from labelme_toolkit import _labelme
 from labelme_toolkit import _migrations
 from labelme_toolkit import _paths
-from labelme_toolkit._cli import cli
 
 
 def _json_to_visualization(
@@ -84,7 +83,7 @@ def _json_to_visualization(
     return output_file
 
 
-@cli.command()
+@click.command()
 @click.argument("file_or_dir", type=click.Path(exists=True), required=True)
 @click.option(
     "--exclude-labels",
