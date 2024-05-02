@@ -8,7 +8,7 @@
 
 <div align="center">
   <a href="#toolkit-guide"><b>Toolkit Guide</b></a>
-  | <a href="https://github.com/labelmeai/labelme"><b>Labelme</b></a>
+  | <a href="https://github.com/labelmeai/labelme"><b>Labelme↗</b></a>
 </div>
 
 ## Installation
