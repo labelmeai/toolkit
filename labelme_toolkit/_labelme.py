@@ -1,4 +1,5 @@
 import dataclasses
+from typing import Optional
 from typing import Tuple
 from typing import Union
 
@@ -12,20 +13,39 @@ class Shape:
     type: str
     points: np.ndarray
     label: str
+    mask: Optional[np.ndarray] = None
 
     def __post_init__(self):
         self.points = np.asarray(self.points)
 
-        if self.type not in ["circle", "rectangle", "polygon"]:
+        if self.type not in ["circle", "rectangle", "polygon", "mask"]:
             raise ValueError(f"Unsupported shape type={self.type!r}")
-        if self.points.ndim == 2 and self.points.shape[1] != 2:
+        if not (self.points.ndim == 2 and self.points.shape[1] == 2):
             raise ValueError(f"Invalid shape points.shape={self.points.shape!r}")
         if self.type in ["circle", "rectangle"] and self.points.shape != (2, 2):
             raise ValueError(
                 f"Invalid shape points.shape={self.points.shape!r} for "
                 f"type={self.type!r}"
             )
+        if self.type == "mask":
+            if self.mask is None:
+                raise ValueError(f"shape.type={self.type!r} requires mask")
+            if self.mask.ndim != 2:
+                raise ValueError(f"expected mask.ndim=2, but got {self.mask.ndim}")
+            if self.mask.dtype != bool:
+                raise ValueError(f"expected mask.dtype=bool, but got {self.mask.dtype}")
+            if self.points.size != 4:
+                raise ValueError(
+                    f"expected shape.points.size=4, but got {self.points.size}"
+                )
 
+            mask_height, mask_width = self.mask.shape
+            (xmin, ymin), (xmax, ymax) = self.points
+            if xmax - xmin + 1 != mask_width or ymax - ymin + 1 != mask_height:
+                raise ValueError(
+                    f"shape.points={self.points!r} does not match "
+                    f"mask.shape={self.mask.shape!r}"
+                )
 
 def shape_to_mask(shape: Shape, image_height: int, image_width: int) -> np.ndarray:
     mask: np.ndarray = np.zeros((image_height, image_width), dtype=np.uint8)
