@@ -7,6 +7,8 @@ import numpy as np
 import PIL.Image
 import PIL.ImageDraw
 
+from . import _json
+
 
 @dataclasses.dataclass
 class Shape:
@@ -46,6 +48,17 @@ class Shape:
                     f"shape.points={self.points!r} does not match "
                     f"mask.shape={self.mask.shape!r}"
                 )
+
+    def to_json(self):
+        return {
+            "label": self.label,
+            "points": self.points.tolist(),
+            "shape_type": self.type,
+            "mask": None
+            if self.mask is None
+            else _json.image_ndarray_to_b64data(ndarray=self.mask),
+        }
+
 
 def shape_to_mask(shape: Shape, image_height: int, image_width: int) -> np.ndarray:
     mask: np.ndarray = np.zeros((image_height, image_width), dtype=np.uint8)
