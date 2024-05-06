@@ -1,5 +1,7 @@
 import subprocess
+import sys
 import urllib.request
+from typing import Optional
 
 import click
 from loguru import logger
@@ -8,7 +10,6 @@ from loguru import logger
 @click.command()
 @click.option(
     "--access-key",
-    prompt=True,
     help="access key to install",
 )
 @click.option(
@@ -26,7 +27,9 @@ from loguru import logger
     is_flag=True,
     help="list available versions",
 )
-def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions: bool):
+def install_toolkit_pro(
+    access_key: Optional[str], version: str, yes: bool, list_versions: bool
+):
     """Install Toolkit Pro.
 
     Examples:
@@ -38,18 +41,19 @@ def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions:
 
     """
     logger.info("Installing the Labelme Toolkit Pro...")
-    logger.info(f"Access key: {access_key}")
 
-    url_path = f"https://labelmeai.github.io/toolkit-pro/{access_key}"
+    url_path = "https://labelmeai.github.io/toolkit-pro"
 
     with urllib.request.urlopen(f"{url_path}/versions") as response:
         data = response.read()
         versions = [version.strip() for version in data.decode("utf-8").splitlines()]
 
     if list_versions:
-        for version in versions:
+        for i, version in enumerate(versions):
             click.echo(version)
         return
+
+    logger.info(f"Available versions: {versions}")
 
     if version == "latest":
         version = versions[-1]
@@ -59,6 +63,9 @@ def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions:
         return
     else:
         logger.info(f"Installing version: {version}")
+
+    if access_key is None:
+        access_key = click.prompt("Enter access key")
 
     if not yes:
         if not click.confirm("Do you want to install?"):
