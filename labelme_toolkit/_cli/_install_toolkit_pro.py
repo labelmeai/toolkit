@@ -1,4 +1,3 @@
-import os.path as osp
 import subprocess
 import urllib.request
 
@@ -43,7 +42,7 @@ def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions:
 
     url_path = f"https://labelmeai.github.io/toolkit-pro/{access_key}"
 
-    with urllib.request.urlopen(osp.join(url_path, "versions")) as response:
+    with urllib.request.urlopen(f"{url_path}/versions") as response:
         data = response.read()
         versions = [version.strip() for version in data.decode("utf-8").splitlines()]
 
@@ -70,7 +69,7 @@ def install_toolkit_pro(access_key: str, version: str, yes: bool, list_versions:
         "pip",
         "install",
         "-I",
-        osp.join(url_path, f"labelme_toolkit_pro-{version}-py3-none-any.whl"),
+        f"{url_path}/labelme_toolkit_pro-{version}-py3-none-any.whl",
     ]
     logger.info(f"Running command: {' '.join(cmd)}")
     try:
