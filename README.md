@@ -52,7 +52,7 @@ Commands:
 ## Toolkit Guide
 
 If you're new to Labelme Toolkit, you can get started with
-<a href="https://labelme.gumroad.com/l/toolkit?option=vDQ4V5h0nAwWV_Zk5QHkMA%3D%3D"><b>Toolkit Starter Plan</b></a>
+<a href="https://labelme.gumroad.com/l/toolkit?option=vDQ4V5h0nAwWV_Zk5QHkMA%3D%3D"><b>Toolkit Trial</b></a>
 (FREE), which contains:
 
 - <b>Installation guide</b> for all platforms: Windows, macOS, and Linux.
