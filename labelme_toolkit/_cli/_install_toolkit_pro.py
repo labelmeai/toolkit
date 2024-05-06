@@ -73,12 +73,13 @@ def install_toolkit_pro(
             return
 
     cmd = [
+        sys.executable,
+        "-m",
         "pip",
         "install",
-        "-I",
-        f"{url_path}/labelme_toolkit_pro-{version}-py3-none-any.whl",
+        f"{url_path}/{access_key}/labelme_toolkit_pro-{version}-py3-none-any.whl",
     ]
-    logger.info(f"Running command: {' '.join(cmd)}")
+    logger.info(' '.join(cmd))
     try:
         subprocess.check_call(cmd)
     except subprocess.CalledProcessError:
