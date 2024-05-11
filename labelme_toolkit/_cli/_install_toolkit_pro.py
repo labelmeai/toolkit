@@ -42,7 +42,7 @@ def install_toolkit_pro(
     """
     logger.info("Installing the Labelme Toolkit Pro...")
 
-    url_path = "https://labelmeai.github.io/toolkit-pro"
+    url_path = "https://toolkit-pro.labelme.io"
 
     with urllib.request.urlopen(f"{url_path}/versions") as response:
         data = response.read()
