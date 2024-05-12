@@ -7,8 +7,7 @@
 </h4>
 
 <div align="center">
-  <a href="#toolkit-guide"><b>Toolkit Guide</b></a>
-  | <a href="https://github.com/labelmeai/labelme"><b>Labelme↗</b></a>
+  <a href="https://github.com/labelmeai/labelme"><b>Labelme↗</b></a>
 </div>
 
 ## Installation
@@ -47,16 +46,3 @@ Commands:
   json-to-visualization  Convert a Labelme JSON file to a visualization.
   list-labels            List unique labels in the JSON files.
 ```
-
-
-## Toolkit Guide
-
-If you're new to Labelme Toolkit, you can get started with
-<a href="https://labelme.gumroad.com/l/toolkit?option=vDQ4V5h0nAwWV_Zk5QHkMA%3D%3D"><b>Toolkit Trial</b></a>
-(FREE), which contains:
-
-- <b>Installation guide</b> for all platforms: Windows, macOS, and Linux.
-- <b>Step-by-step usage guide</b> for each tools.
-- <b>Examples data</b> that shows the real use of the tools.
-
-<img src=".readme/toolkit_guide.jpg" width="50%">
