@@ -79,7 +79,7 @@ def install_toolkit_pro(
         "install",
         f"{url_path}/{access_key}/labelme_toolkit_pro-{version}-py3-none-any.whl",
     ]
-    logger.info(' '.join(cmd))
+    logger.info(" ".join(cmd))
     try:
         subprocess.check_call(cmd)
     except subprocess.CalledProcessError:
