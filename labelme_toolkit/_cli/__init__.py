@@ -27,7 +27,7 @@ cli.add_command(json_to_visualization)
 cli.add_command(list_labels)
 
 try:
-    from labelme_toolkit_pro._cli import COMMANDS
+    from labelme_toolkit_pro import COMMANDS
 
     for command in COMMANDS:
         cli.add_command(command)
