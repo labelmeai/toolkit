@@ -33,6 +33,7 @@ dependencies = [
   "loguru",
   "numpy",
   "osam>=0.2.0",
+  "osam-core>=0.1.1",
   "Pillow>=10.1",
 ]
 dynamic = ["readme", "version"]
