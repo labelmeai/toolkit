@@ -4,6 +4,7 @@ import click
 from loguru import logger
 
 from .. import __version__
+from ._ai_annotate_rectangles import ai_annotate_rectangles
 from ._extract_image import extract_image
 from ._install_toolkit_pro import install_toolkit_pro
 from ._json_to_mask import json_to_mask
@@ -20,6 +21,7 @@ def cli():
     )
 
 
+cli.add_command(ai_annotate_rectangles)
 cli.add_command(extract_image)
 cli.add_command(install_toolkit_pro)
 cli.add_command(json_to_mask)
