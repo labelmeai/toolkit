@@ -32,6 +32,7 @@ dependencies = [
   "jinja2",
   "loguru",
   "numpy",
+  "osam>=0.2.0",
   "Pillow>=10.1",
 ]
 dynamic = ["readme", "version"]
