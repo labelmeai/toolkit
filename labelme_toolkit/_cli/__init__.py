@@ -25,3 +25,11 @@ cli.add_command(install_toolkit_pro)
 cli.add_command(json_to_mask)
 cli.add_command(json_to_visualization)
 cli.add_command(list_labels)
+
+try:
+    from labelme_toolkit_pro._cli import COMMANDS
+
+    for command in COMMANDS:
+        cli.add_command(command)
+except ImportError:
+    pass
