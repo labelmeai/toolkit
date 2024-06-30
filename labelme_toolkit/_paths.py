@@ -1,5 +1,5 @@
-import glob
 import os
+import re
 from typing import List
 from typing import Tuple
 
@@ -9,19 +9,24 @@ from . import _formats
 
 
 def get_json_files_and_output_dir(file_or_dir: str) -> Tuple[List[str], str]:
+    return get_files_and_output_dir(file_or_dir, r".*\.json$")
+
+
+def get_files_and_output_dir(file_or_dir: str, pattern: str) -> Tuple[List[str], str]:
     if not os.path.exists(file_or_dir):
         raise FileNotFoundError(f"File or directory not found: {file_or_dir!r}")
 
     file_or_dir = os.path.normpath(file_or_dir)
 
-    json_files: List[str]
+    files: List[str]
     if os.path.isfile(file_or_dir):
-        json_files = [file_or_dir]
+        files = [file_or_dir]
     else:
-        json_files = sorted(glob.glob(os.path.join(file_or_dir, "*.json")))
-    logger.info(
-        f"Found {len(json_files)} JSON files: {_formats.pformat_list(json_files)}"
-    )
+        files = []
+        for file in os.listdir(file_or_dir):
+            if re.match(pattern, file):
+                files.append(os.path.join(file_or_dir, file))
+    logger.info(f"Found {len(files)} JSON files: {_formats.pformat_list(files)}")
 
     if os.path.isfile(file_or_dir):
         output_dir_prefix = os.path.splitext(file_or_dir)[0]
@@ -30,4 +35,4 @@ def get_json_files_and_output_dir(file_or_dir: str) -> Tuple[List[str], str]:
 
     output_dir: str = f"{output_dir_prefix}.export"
 
-    return json_files, output_dir
+    return files, output_dir
