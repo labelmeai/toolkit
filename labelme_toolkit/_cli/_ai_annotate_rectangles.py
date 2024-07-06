@@ -75,6 +75,10 @@ def _ai_annotate_rectangles(
     logger.info(f"{image_file!r} - Saved to {output_image_file!r}")
 
 
+def _comma_separated_text(value: str) -> List[str]:
+    return value.split(",")
+
+
 @click.command()
 @click.argument("file_or_dir", type=click.Path(exists=True), required=True)
 @click.option(
@@ -86,9 +90,8 @@ def _ai_annotate_rectangles(
 )
 @click.option(
     "--texts",
-    multiple=True,
-    type=str,
-    help="Texts to annotate.",
+    type=_comma_separated_text,
+    help="Comma separated texts to annotate (e.g., 'dog,cat').",
     required=True,
 )
 @click.option(
@@ -120,8 +123,8 @@ def ai_annotate_rectangles(file_or_dir: str, **kwargs) -> None:
     Examples:
 
      \b
-     $ labelmetk ai-annotate-rectangles examples/small_dataset/2011_000003.json --texts person
-     $ labelmetk ai-annotate-rectangles examples/small_dataset/ --texts person
+     $ labelmetk ai-annotate-rectangles examples/small_dataset/2011_000003.jpg --texts person,hat
+     $ labelmetk ai-annotate-rectangles examples/small_dataset/ --texts person,hat
 
     """  # noqa: E501
     image_files: List[str]
