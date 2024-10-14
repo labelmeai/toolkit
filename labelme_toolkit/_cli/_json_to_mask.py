@@ -10,6 +10,7 @@ import PIL.Image
 from loguru import logger
 
 from .. import _browsers
+from .. import _json
 from .. import _labelme
 from .. import _migrations
 from .. import _paths
@@ -30,10 +31,16 @@ def _json_to_mask(
 
     mask = np.zeros((json_data["imageHeight"], json_data["imageWidth"]), dtype=bool)
     for i, shape in enumerate(json_data["shapes"]):
+        if "mask" in shape:
+            shape_mask = _json.image_b64data_to_ndarray(b64data=shape["mask"])
+        else:
+            shape_mask = None
+
         shape = _labelme.Shape(
             type=shape["shape_type"],
             points=shape["points"],
             label=shape["label"],
+            mask=shape_mask,
         )
 
         if include_labels is not None and shape.label not in include_labels:
