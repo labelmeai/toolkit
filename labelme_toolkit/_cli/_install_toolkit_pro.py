@@ -1,3 +1,4 @@
+import hashlib
 import subprocess
 import sys
 import urllib.request
@@ -42,7 +43,7 @@ def install_toolkit_pro(
     """
     logger.info("Installing the Labelme Toolkit Pro...")
 
-    url_path = "https://toolkit-pro.labelme.io"
+    url_path = "https://labelme.io/pro/install"
 
     with urllib.request.urlopen(f"{url_path}/versions") as response:
         data = response.read()
@@ -67,19 +68,22 @@ def install_toolkit_pro(
     if access_key is None:
         access_key = click.prompt("Enter access key")
 
-    if not yes:
-        if not click.confirm("Do you want to install?"):
-            click.echo("Installation is canceled.")
-            return
+    access_token: str = hashlib.sha256(access_key.encode()).hexdigest().upper()
 
     cmd = [
         sys.executable,
         "-m",
         "pip",
         "install",
-        f"{url_path}/{access_key}/labelme_toolkit_pro-{version}-py3-none-any.whl",
+        f"{url_path}/files/labelme_toolkit_pro-{version}-py3-none-any.whl?token={access_token}",
     ]
-    logger.info(" ".join(cmd))
+    logger.info("Running command: {}", " ".join(cmd))
+
+    if not yes:
+        if not click.confirm("Do you want to install?"):
+            click.echo("Installation is canceled.")
+            return
+
     try:
         subprocess.check_call(cmd)
     except subprocess.CalledProcessError:
