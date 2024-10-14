@@ -111,7 +111,9 @@ def draw_shape_(
         mask_height, mask_width = shape.mask.shape
         (xmin, ymin), (xmax, ymax) = points
         mask = PIL.Image.fromarray(shape.mask)
-        mask = mask.resize((xmax - xmin + 1, ymax - ymin + 1), resample=PIL.Image.NEAREST)
+        mask = mask.resize(
+            (xmax - xmin + 1, ymax - ymin + 1), resample=PIL.Image.NEAREST
+        )
         image.paste(mask, (xmin, ymin))
     else:
         raise ValueError(f"Cannot draw shape type={shape.type!r}")
