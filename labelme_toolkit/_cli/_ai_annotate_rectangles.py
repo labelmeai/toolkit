@@ -64,6 +64,8 @@ def _ai_annotate_rectangles(
                 "shapes": shapes,
                 "imagePath": os.path.basename(image_file),
                 "imageData": None,
+                "imageHeight": image.shape[0],
+                "imageWidth": image.shape[1],
             },
             f,
             indent=2,
