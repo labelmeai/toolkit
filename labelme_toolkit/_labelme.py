@@ -15,6 +15,7 @@ class Shape:
     type: str
     points: np.ndarray
     label: str
+    group_id: Optional[int] = None
     mask: Optional[np.ndarray] = None
 
     def __post_init__(self):
@@ -57,6 +58,7 @@ class Shape:
             "mask": None
             if self.mask is None
             else _json.image_ndarray_to_b64data(ndarray=self.mask),
+            "group_id": self.group_id,
         }
 
 
