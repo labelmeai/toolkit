@@ -110,6 +110,7 @@ def draw_shape_(
     elif shape.type == "polygon":
         draw.polygon(xy=points, fill=fill_color, outline=line_color, width=line_width)
     elif shape.type == "mask":
+        assert shape.mask is not None
         mask_height, mask_width = shape.mask.shape
         (xmin, ymin), (xmax, ymax) = points
         mask = PIL.Image.fromarray(shape.mask)

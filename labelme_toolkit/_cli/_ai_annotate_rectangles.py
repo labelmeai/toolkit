@@ -42,10 +42,13 @@ def _ai_annotate_rectangles(
     for annotation in response.annotations:
         shape: _labelme.Shape = _labelme.Shape(
             type="rectangle",
-            points=[
-                [annotation.bounding_box.xmin, annotation.bounding_box.ymin],
-                [annotation.bounding_box.xmax, annotation.bounding_box.ymax],
-            ],
+            points=np.array(
+                [
+                    [annotation.bounding_box.xmin, annotation.bounding_box.ymin],
+                    [annotation.bounding_box.xmax, annotation.bounding_box.ymax],
+                ],
+                dtype=np.float32,
+            ),
             label=annotation.text,
         )
         shape_dict: Dict = shape.to_json()
