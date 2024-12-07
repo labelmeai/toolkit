@@ -29,6 +29,10 @@ jobs:
       shell: bash
       run: |
         make lint
+    - name: Mypy
+      shell: bash
+      run: |
+        make mypy
     - name: Test
       shell: bash
       run: |
