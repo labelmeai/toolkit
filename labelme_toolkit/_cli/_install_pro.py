@@ -1,7 +1,11 @@
 import hashlib
 import subprocess
 import sys
-import urllib.request
+
+if sys.version_info < (3, 11):
+    from .._urllib import urlopen
+else:
+    from urllib.request import urlopen
 from typing import Optional
 
 import click
@@ -45,7 +49,7 @@ def install_pro(
 
     url_path = "https://labelme.io/pro/install"
 
-    with urllib.request.urlopen(f"{url_path}/versions") as response:
+    with urlopen(f"{url_path}/versions") as response:
         data = response.read()
         versions = [version.strip() for version in data.decode("utf-8").splitlines()]
 
