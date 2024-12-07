@@ -29,7 +29,7 @@ labelmetk <COMMAND> [OPTIONS]
 
 - `ai-annotate-rectangles`:  Annotate rectangle from text by AI.
 - `extract-image`:           Extract image from a JSON file.
-- `install-toolkit-pro`:     Install Toolkit Pro.
+- `install-pro`:             Install Toolkit Pro.
 - `json-to-mask`:            Convert a Labelme JSON file to a mask.
 - `json-to-visualization`:   Convert a Labelme JSON file to a visualization.
 - `list-labels`:             List unique labels in the JSON files.
