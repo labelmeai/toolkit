@@ -34,6 +34,4 @@ labelmetk <COMMAND> [OPTIONS]
 - `json-to-visualization`:   Convert a Labelme JSON file to a visualization.
 - `list-labels`:             List unique labels in the JSON files.
 
-For step-by-step guide: [Labelme Toolkit Guide](https://gumroad.labelme.io/l/toolkit-guide).
-
-For Pro version: [Labelme Toolkit Pro](https://gumroad.labelme.io/l/toolkit-pro).
+For Pro version, check [Labelme Pro](https://labelme.io/pro).
