@@ -1,3 +1,4 @@
+import os
 import sys
 
 import click
@@ -16,9 +17,18 @@ from ._list_labels import list_labels
 @click.group(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.version_option(__version__)
 def cli():
-    logger.remove()
+    logger.remove(0)
     logger.add(
-        sys.stderr, level="INFO", colorize=True, format="<level>{message}</level>"
+        sys.stderr,
+        level="INFO",
+        colorize=True,
+        format="<level>{message}</level>",
+        backtrace=False,
+        diagnose=False,
+    )
+    os.makedirs(os.path.expanduser("~/.cache/labelme"), exist_ok=True)
+    logger.add(
+        os.path.expanduser("~/.cache/labelme/toolkit.log"), colorize=True, level="DEBUG"
     )
 
 
