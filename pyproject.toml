@@ -32,6 +32,7 @@ dependencies = [
   "jinja2",
   "loguru",
   "numpy",
+  "onnxruntime==1.19.2",
   "osam>=0.2.0",
   "osam-core>=0.1.1",
   "Pillow>=10.1",
