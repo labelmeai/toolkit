@@ -50,6 +50,9 @@ test = [
   "ruff",
   "twine",
 ]
+pro = [
+    "labelme-toolkit-pro",
+]
 
 [project.urls]
 Homepage = "https://github.com/labelmeai/toolkit"
@@ -105,6 +108,9 @@ skip-magic-trailing-comma = false
 
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[tool.uv.sources]
+labelme-toolkit-pro = { git = "https://github.com/labelmeai/toolkit-pro.git" }
 
 [tool.ruff.lint.isort]
 force-single-line = true
