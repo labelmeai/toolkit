@@ -17,11 +17,16 @@ from ._list_labels import list_labels
 @click.version_option(__version__)
 def cli():
     logger.remove(0)
+
+    def format_console(record: dict):
+        # don't show any tracebacks in the console
+        return "<level>{message}</level>\n"
+
     logger.add(
         sys.stderr,
         level="INFO",
         colorize=True,
-        format="<level>{message}</level>",
+        format=format_console,
         backtrace=False,
         diagnose=False,
     )
