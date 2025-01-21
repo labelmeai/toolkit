@@ -19,8 +19,14 @@ def cli():
     logger.remove(0)
 
     def format_console(record: dict):
-        # don't show any tracebacks in the console
-        return "<level>{message}</level>\n"
+        # 1. don't show any tracebacks in the console
+        # 2. show the level of the log message when it's >= WARNING
+        if record["level"].no >= 30:  # 30 = WARNING
+            return (
+                f"<level>{record['level'].name.lower()}:</level> {record['message']}\n"
+            )
+        else:
+            return f"{record['message']}\n"
 
     logger.add(
         sys.stderr,
