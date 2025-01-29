@@ -5,25 +5,30 @@ all:
 
 PACKAGE_NAME:=labelme_toolkit
 
+install:
+	uv sync --dev
+
 mypy:
-	mypy --package $(PACKAGE_NAME)
+	uv run mypy --package $(PACKAGE_NAME)
 
 lint:
-	ruff format --check
-	ruff check
+	uv run ruff format --check
+	uv run ruff check
 
 format:
-	ruff format
-	ruff check --fix
+	uv run ruff format
+	uv run ruff check --fix
 
 test:
-	python -m pytest -n auto -v $(PACKAGE_NAME)
+	uv run pytest -n auto -v $(PACKAGE_NAME)
 
 clean:
 	rm -rf build dist *.egg-info
 
 build: clean
-	python -m build --sdist --wheel
+	uv run python -m build --sdist --wheel
 
-publish: build
-	python -m twine upload dist/$(PACKAGE_NAME)-*
+# upload: build
+# 	python -m twine upload dist/$(PACKAGE_NAME)-*
+#
+# publish: build upload
