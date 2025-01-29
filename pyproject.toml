@@ -27,11 +27,11 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-  "click",
-  "imgviz",
-  "jinja2",
-  "loguru",
-  "numpy",
+  "click>=8.1.8",
+  "imgviz>=1.7.6",
+  "jinja2>=3.1.5",
+  "loguru>=0.7.3",
+  "numpy>=2.0.2",
   "osam>=0.2.0",
   "Pillow>=10.1",
 ]
