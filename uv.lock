@@ -855,7 +855,7 @@ wheels = [
 
 [[package]]
 name = "labelme-toolkit"
-version = "1.3.4.dev1+g134e1ba.d20250129"
+version = "1.3.4.dev3+ge44547f.d20250129"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
